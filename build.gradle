@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'nebula.release' version '6.0.0'
+}
+
+// Define the main class for the application
+mainClassName = 'veriblock.Main'
+
+repositories {
+    mavenLocal()
+    jcenter()
+
+    //pull dependencies from local /lib folder
+    flatDir {
+        dirs '/lib'
+    }
+}
+
+dependencies {
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+
+    //Keep it simple, just pull all jar files from /lib folder
+    compile fileTree(dir: 'lib', include: '*.jar')
+}
